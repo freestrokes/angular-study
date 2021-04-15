@@ -1,0 +1,12 @@
+nav {background-color: #4a4c88; overflow: hidden;}
+.title, .user {
+  line-height: 50px;
+  margin:0 30px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.title {float: left;}
+.user {float: right; font-style: italic;}
