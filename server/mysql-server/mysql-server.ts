@@ -27,7 +27,7 @@ app.use('/', require('./app/route/route.ts'));
 
 // DB connection
 const db = require('./app/model/index.ts');
-db.sequelize.sync();
+db.sequelizeConfig.sync();
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");

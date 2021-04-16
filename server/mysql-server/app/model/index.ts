@@ -1,7 +1,7 @@
-const dbConfig = require("../config/config.ts");
+const dbConfig = require('../config/config.ts');
+const Sequelize = require('sequelize');
 
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize(
+const sequelizeConfig = new Sequelize(
     dbConfig.DB,
     dbConfig.USER,
     dbConfig.PASSWORD,
@@ -9,7 +9,6 @@ const sequelize = new Sequelize(
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
         operatorsAliases: false,
-
         pool: {
             max: dbConfig.pool.max,
             min: dbConfig.pool.min,
@@ -20,10 +19,8 @@ const sequelize = new Sequelize(
 );
 
 const db = {};
-
 db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-
-db.tutorials = require("./model.ts")(sequelize, Sequelize);
+db.sequelizeConfig = sequelizeConfig;
+db.tutorial = require('./model.ts')(sequelizeConfig, Sequelize);
 
 module.exports = db;
