@@ -24,25 +24,25 @@ const tutorial = require('../controller/controller.ts');
 // router.delete('/', tutorial.deleteAll);
 
 // Create a new Tutorial
-router.post('/', tutorial.create);
+router.post('/api/tutorial', tutorial.create);
 
 // Retrieve all Tutorials
-router.get('/', tutorial.findAll);
+router.get('/api/tutorial', tutorial.findAll);
 
 // Retrieve all published Tutorials
 router.get('/published', tutorial.findAllPublished);
 
 // Retrieve a single Tutorial with id
-router.get('/:id', tutorial.findOne);
+router.get('api/tutorial/:id', tutorial.findOne);
 
 // Update a Tutorial with id
-router.put('/:id', tutorial.update);
+router.put('api/tutorial/:id', tutorial.update);
 
 // Delete a Tutorial with id
-router.delete('/:id', tutorial.delete);
+router.delete('api/tutorial/:id', tutorial.delete);
 
 // Delete all Tutorials
-router.delete('/', tutorial.deleteAll);
+router.delete('/api/tutorial', tutorial.deleteAll);
 
 module.exports = router;
 
