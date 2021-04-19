@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TutorialsListComponent } from './components/tutorials-list/tutorials-list.component';
-import { TutorialDetailsComponent } from './components/tutorial-details/tutorial-details.component';
-import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
+
+import { TutorialModule } from './tutorial/tutorial.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorial', pathMatch: 'full' },
-  { path: 'tutorial', component: TutorialsListComponent },
-  { path: 'tutorial/:id', component: TutorialDetailsComponent },
-  { path: 'add', component: AddTutorialComponent }
+  //TODO
+  // {
+  //   path: '',
+  //   loadChildren: 'app/tutorial/tutorial.module#TutorialModule'
+  // }
+  {
+    path: '',
+    loadChildren: () => TutorialModule
+  }
 ];
 
 @NgModule({
