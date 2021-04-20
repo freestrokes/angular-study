@@ -33,13 +33,13 @@ router.get('/api/tutorial', tutorial.findAll);
 router.get('/published', tutorial.findAllPublished);
 
 // Retrieve a single Tutorial with id
-router.get('api/tutorial/:id', tutorial.findOne);
+router.get('/api/tutorial/:id', tutorial.findOne);
 
 // Update a Tutorial with id
-router.put('api/tutorial/:id', tutorial.update);
+router.put('/api/tutorial/:id', tutorial.update);
 
 // Delete a Tutorial with id
-router.delete('api/tutorial/:id', tutorial.delete);
+router.delete('/api/tutorial/:id', tutorial.delete);
 
 // Delete all Tutorials
 router.delete('/api/tutorial', tutorial.deleteAll);

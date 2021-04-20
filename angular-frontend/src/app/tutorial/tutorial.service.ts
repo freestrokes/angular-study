@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tutorial } from '../models/tutorial.model';
+import { Tutorial } from 'src/app/tutorial/tutorial.value';
 
 const baseUrl = 'http://localhost:8080/api/tutorial';
 
-@Injectable({
-  providedIn: 'root'
-})
+// 전역에서 사용하고자하는 경우 아래와 같이 설정
+// @Injectable({
+//   providedIn: 'root'
+// })
+@Injectable()
 export class TutorialService {
 
   constructor(private http: HttpClient) { }

@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { TutorialService } from 'src/app/services/tutorial.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Tutorial } from 'src/app/models/tutorial.model';
+import { Tutorial } from 'src/app/tutorial/tutorial.value';
+import { TutorialService } from 'src/app/tutorial/tutorial.service';
 
 @Component({
-  selector: 'app-tutorial-details',
-  templateUrl: './tutorial-details.component.html',
-  styles: ['./tutorial-details.component.css']
+  selector: 'app-tutorial-detail',
+  templateUrl: './tutorial-detail.component.html',
+  styleUrls: ['./tutorial-detail.component.css']
 })
-export class TutorialDetailsComponent implements OnInit {
+export class TutorialDetailComponent implements OnInit {
+
+  // TODO
+  // tutorial.value import하여 변경할 것
   currentTutorial: Tutorial = {
     title: '',
     description: '',

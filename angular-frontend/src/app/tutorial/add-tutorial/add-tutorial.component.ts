@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Tutorial } from 'src/app/models/tutorial.model';
-import { TutorialService } from 'src/app/services/tutorial.service';
+import { Tutorial } from 'src/app/tutorial/tutorial.value';
+import { TutorialService } from 'src/app/tutorial/tutorial.service';
 
 @Component({
   selector: 'app-add-tutorial',
   templateUrl: './add-tutorial.component.html',
-  styles: ['./add-tutorial.component.css']
+  styleUrls: ['./add-tutorial.component.css']
 })
 export class AddTutorialComponent implements OnInit {
+
   tutorial: Tutorial = {
     title: '',
     description: '',

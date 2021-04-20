@@ -3,9 +3,11 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { TutorialsListComponent } from './tutorials-list/tutorials-list.component';
-import { TutorialDetailsComponent } from './tutorial-details/tutorial-details.component';
-import { AddTutorialComponent } from './add-tutorial/add-tutorial.component';
+import { TutorialListComponent } from 'src/app/tutorial/tutorial-list/tutorial-list.component';
+import { TutorialDetailComponent } from 'src/app/tutorial/tutorial-detail/tutorial-detail.component';
+import { AddTutorialComponent } from 'src/app/tutorial/add-tutorial/add-tutorial.component';
+
+import { TutorialService } from 'src/app/tutorial/tutorial.service';
 
 @NgModule({
   imports: [
@@ -20,11 +22,11 @@ import { AddTutorialComponent } from './add-tutorial/add-tutorial.component';
       },
       {
         path: 'tutorial',
-        component: TutorialsListComponent
+        component: TutorialListComponent
       },
       {
         path: 'tutorial/:id',
-        component: TutorialDetailsComponent
+        component: TutorialDetailComponent
       },
       {
         path: 'add',
@@ -33,11 +35,12 @@ import { AddTutorialComponent } from './add-tutorial/add-tutorial.component';
     ])
   ],
   declarations: [
-    TutorialsListComponent,
-    TutorialDetailsComponent,
+    TutorialListComponent,
+    TutorialDetailComponent,
     AddTutorialComponent
   ],
   providers: [
+    TutorialService
   ]
 })
 export class TutorialModule {
