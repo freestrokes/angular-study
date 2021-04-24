@@ -1,8 +1,6 @@
 const db = require('../model/index.ts');
 const Tutorial = db.tutorial;
-const Op = require('sequelize');
-//TODO
-// const Op = db.sequelize.Op;
+const Op = db.Sequelize.Op;
 
 // Create tutorial
 exports.create = (req, res) => {
@@ -37,12 +35,18 @@ exports.create = (req, res) => {
 // Retrieve all tutorials
 exports.findAll = (req, res) => {
     const title = req.query.title;
-    const condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    const condition = { where: (title ? { title: { [Op.like]: `%${title}%` } } : null) };
+    //TODO
+    // const condition = {
+    //         where: {
+    //             title: {
+    //                 [Op.like]: (title ? `%${title}%` : null)
+    //             }
+    //         }
+    //     };
 
     Tutorial
-        .findAll({
-            where: condition
-        })
+        .findAll(condition)
         .then(data => {
             res.send(data);
         })
