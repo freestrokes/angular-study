@@ -1,77 +1,27 @@
 const router = require('express').Router();
 const tutorial = require('../controller/controller.ts');
 
-//TODO
-// // Create document
-// router.post('/api/tutorial', tutorial.create);
-//
-// // Retrieve all documents
-// router.get('/api/tutorial', tutorial.findAll);
-//
-// // Retrieve all published Tutorials
-// // router.get('/published', tutorial.findAllPublished);
-//
-// // Retrieve single document
-// router.get('/api/tutorial/:id', tutorial.findOne);
-//
-// // Update document by id
-// router.put('/api/tutorial/:id', tutorial.update);
-//
-// // Delete document by id
-// router.delete('/api/tutorial/:id', tutorial.delete);
-
-// Create a new Tutorial
-// router.delete('/', tutorial.deleteAll);
-
-// Create a new Tutorial
+// Create tutorial
 router.post('/api/tutorial', tutorial.create);
 
-// Retrieve all Tutorials
+// Retrieve all tutorials
 router.get('/api/tutorial', tutorial.findAll);
 
-// Retrieve all published Tutorials
-router.get('/published', tutorial.findAllPublished);
-
-// Retrieve a single Tutorial with id
+// Retrieve tutorial by id
 router.get('/api/tutorial/:id', tutorial.findOne);
 
-// Update a Tutorial with id
+// Update tutorial by id
 router.put('/api/tutorial/:id', tutorial.update);
 
-// Delete a Tutorial with id
+// Delete tutorial by id
 router.delete('/api/tutorial/:id', tutorial.delete);
 
-// Delete all Tutorials
-router.delete('/api/tutorial', tutorial.deleteAll);
-
-module.exports = router;
+//TODO
+// Delete all tutorials
+// router.delete('/api/tutorial', tutorial.deleteAll);
 
 //TODO
-// module.exports = app => {
-//     const tutorials = require("../controller/controller.ts");
-//
-//     var router = require("express").Router();
-//
-//     // Create a new Tutorial
-//     router.post("/", tutorials.create);
-//
-//     // Retrieve all Tutorials
-//     router.get("/", tutorials.findAll);
-//
-//     // Retrieve all published Tutorials
-//     router.get("/published", tutorials.findAllPublished);
-//
-//     // Retrieve a single Tutorial with id
-//     router.get("/:id", tutorials.findOne);
-//
-//     // Update a Tutorial with id
-//     router.put("/:id", tutorials.update);
-//
-//     // Delete a Tutorial with id
-//     router.delete("/:id", tutorials.delete);
-//
-//     // Delete all Tutorials
-//     router.delete("/", tutorials.deleteAll);
-//
-//     app.use('/api/tutorials', router);
-// };
+// Retrieve all published tutorials
+// router.get('/published', tutorial.findAllPublished);
+
+module.exports = router;
