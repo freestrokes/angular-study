@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
+
 
 @Component({
   selector: 'app-tutorial-add',
@@ -9,42 +11,37 @@ import { TutorialService } from 'src/app/tutorial/tutorial.service';
 })
 export class TutorialAddComponent implements OnInit {
 
-  tutorial: Tutorial = {
-    title: '',
-    description: '',
-    published: false
-  };
-  submitted = false;
+  public tutorial: Tutorial = new Tutorial();
+  //TODO
+  // public submitted: boolean = false;
 
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private tutorialService: TutorialService,
+              private router: Router) {}
 
   ngOnInit(): void {
   }
 
-  saveTutorial(): void {
-    const data = {
-      title: this.tutorial.title,
-      description: this.tutorial.description
-    };
-
-    this.tutorialService.create(data)
-      .subscribe(
-        response => {
+  public createTutorial(): void {
+    this.tutorialService.createTutorial(this.tutorial)
+      .subscribe(response => {
+        if (response) {
+          //TODO
+          // this.submitted = true;
+          this.router.navigate(['/tutorial/list']);
+        } else {
           console.log(response);
-          this.submitted = true;
-        },
-        error => {
-          console.log(error);
-        });
+        }
+      });
   }
 
-  newTutorial(): void {
-    this.submitted = false;
-    this.tutorial = {
-      title: '',
-      description: '',
-      published: false
-    };
-  }
+  //TODO
+  // newTutorial(): void {
+  //   this.submitted = false;
+  //   this.tutorial = {
+  //     title: '',
+  //     description: '',
+  //     published: false
+  //   };
+  // }
 
 }

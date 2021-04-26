@@ -1,18 +1,18 @@
 <div>
-  <div *ngIf="currentTutorial.id" class="edit-form">
+  <div *ngIf="tutorial.id" class="edit-form">
     <h4>Tutorial Detail</h4>
     <form>
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" name="title" class="form-control" id="title" [(ngModel)]="currentTutorial.title"/>
+        <input type="text" name="title" class="form-control" id="title" [(ngModel)]="tutorial.title"/>
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <input type="text" name="description" class="form-control" id="description" [(ngModel)]="currentTutorial.description"/>
+        <input type="text" name="description" class="form-control" id="description" [(ngModel)]="tutorial.description"/>
       </div>
       <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{currentTutorial.published ? 'Published' : 'Pending'}}
+        <label>Status</label>
+        <p><strong>{{tutorial.published ? 'Published' : 'Pending'}}</strong></p>
       </div>
     </form>
     <!--TODO-->
@@ -24,20 +24,19 @@
       <!--<button class="btn btn-success" (click)="newTutorial()">Add</button>-->
     <!--</div>-->
     <!--TODO-->
-
-    <!--<button class="badge badge-primary mr-2" *ngIf="currentTutorial.published" (click)="updatePublished(false)">UnPublish</button>-->
-    <!--<button class="badge badge-primary mr-2" *ngIf="!currentTutorial.published" (click)="updatePublished(true)">Publish</button>-->
+    <!--TODO-->
+    <!--<button class="badge badge-primary mr-2" *ngIf="tutorial.published" (click)="updatePublished(false)">UnPublish</button>-->
+    <!--<button class="badge badge-primary mr-2" *ngIf="!tutorial.published" (click)="updatePublished(true)">Publish</button>-->
     <!--<button class="badge badge-success mb-2" (click)="updateTutorial()">Update</button>-->
     <!--<button class="badge badge-danger mr-2" (click)="deleteTutorial()">Delete</button>-->
-
-    <button class="btn btn-primary mr-2" *ngIf="currentTutorial.published" (click)="updatePublished(false)">UnPublish</button>
-    <button class="btn btn-primary mr-2" *ngIf="!currentTutorial.published" (click)="updatePublished(true)">Publish</button>
+    <!--//TODO-->
+    <button class="btn btn-primary mr-2" *ngIf="tutorial.published" (click)="updatePublished(false)">UnPublish</button>
+    <button class="btn btn-primary mr-2" *ngIf="!tutorial.published" (click)="updatePublished(true)">Publish</button>
     <button class="btn btn-success mr-2" (click)="updateTutorial()">Update</button>
     <button class="btn btn-danger mr-2" (click)="deleteTutorial()">Delete</button>
-    <p>{{message}}</p>
   </div>
   <!--TODO-->
-  <!--<div *ngIf="!currentTutorial.id">-->
+  <!--<div *ngIf="!tutorial.id">-->
     <!--<br/>-->
     <!--<p>Cannot access this Tutorial...</p>-->
   <!--</div>-->

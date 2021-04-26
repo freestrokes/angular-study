@@ -34,16 +34,29 @@ exports.create = (req, res) => {
 
 // Retrieve all tutorials
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    const condition = { where: ( title ? { title: { [Op.like]: `%${title}%` } } : {} ) };
+    const keyword = req.query.keyword;
+    let condition = { where: {} };
     //TODO
-    // const condition = {
-    //         where: {
-    //             title: {
-    //                 [Op.like]: (title ? `%${title}%` : null)
-    //             }
-    //         }
-    //     };
+    // const condition = { where: ( keyword ? { title: { [Op.like]: `%${keyword}%` } } : {} ) };
+
+    if (keyword) {
+        condition = {
+            where : {
+                [Op.or]: [
+                    {
+                        title: {
+                            [Op.like]: `%${keyword}%`
+                        }
+                    },
+                    {
+                        description: {
+                            [Op.like]: `%${keyword}%`
+                        }
+                    }
+                ]
+            }
+        }
+    };
 
     Tutorial
         .findAll(condition)

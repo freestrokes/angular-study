@@ -1,9 +1,9 @@
 <div class="list row">
   <div class="col-md-8">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title"/>
+      <input type="text" class="form-control" placeholder="Please enter search keyword" [(ngModel)]="keyword"/>
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">Search</button>
+        <button class="btn btn-outline-secondary" type="button" (click)="searchTutorial()">Search</button>
       </div>
     </div>
   </div>
@@ -12,10 +12,10 @@
     <ul class="list-group">
       <!--TODO-->
       <!--(click)="setActiveTutorial(tutorial, i)"-->
+      <!--[class.active]="i == currentIndex"-->
       <!--//TODO-->
       <li class="list-group-item"
-          *ngFor="let tutorial of tutorials; let i = index"
-          [class.active]="i == currentIndex"
+          *ngFor="let tutorial of tutorialList; let i = index"
           routerLink="/tutorial/{{tutorial.id}}">
         {{tutorial.title}}
       </li>
