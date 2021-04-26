@@ -12,7 +12,7 @@ const baseUrl = 'http://localhost:8080/api/tutorial';
 @Injectable()
 export class TutorialService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<Tutorial[]> {
     return this.http.get<Tutorial[]>(baseUrl);

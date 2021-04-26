@@ -3,11 +3,11 @@ import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
 
 @Component({
-  selector: 'app-add-tutorial',
-  templateUrl: './add-tutorial.component.html',
-  styleUrls: ['./add-tutorial.component.css']
+  selector: 'app-tutorial-add',
+  templateUrl: './tutorial-add.component.html',
+  styleUrls: ['./tutorial-add.component.css']
 })
-export class AddTutorialComponent implements OnInit {
+export class TutorialAddComponent implements OnInit {
 
   tutorial: Tutorial = {
     title: '',

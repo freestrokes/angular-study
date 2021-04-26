@@ -1,6 +1,6 @@
 const db = require('../model/index.ts');
 const Tutorial = db.tutorial;
-const Op = db.Sequelize.Op;
+const Op = db.sequelize.Op;
 
 // Create tutorial
 exports.create = (req, res) => {
@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 // Retrieve all tutorials
 exports.findAll = (req, res) => {
     const title = req.query.title;
-    const condition = { where: (title ? { title: { [Op.like]: `%${title}%` } } : null) };
+    const condition = { where: ( title ? { title: { [Op.like]: `%${title}%` } } : {} ) };
     //TODO
     // const condition = {
     //         where: {
@@ -78,7 +78,7 @@ exports.update = (req, res) => {
     const id = req.params.id;
     const condition = {
             where: {
-                id: (id ? id : null)
+                id: ( id ? id : null )
             }
         };
 
@@ -110,7 +110,7 @@ exports.delete = (req, res) => {
     const id = req.params.id;
     const condition = {
             where: {
-                id: (id ? id : null)
+                id: ( id ? id : null )
             }
         };
 

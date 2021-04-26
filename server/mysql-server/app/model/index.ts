@@ -19,7 +19,7 @@ const sequelizeConfig = new Sequelize(
 );
 
 const db = {};
-db.Sequelize = Sequelize;
+db.sequelize = Sequelize;
 db.sequelizeConfig = sequelizeConfig;
 db.tutorial = require('./model.ts')(sequelizeConfig, Sequelize);
 
