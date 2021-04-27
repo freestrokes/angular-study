@@ -14,31 +14,31 @@ export class TutorialService {
 
   constructor(private http: HttpClient) {}
 
-  getTutorialList(): Observable<Tutorial[]> {
+  public getTutorialList(): Observable<Tutorial[]> {
     return this.http.get<Tutorial[]>(baseUrl);
   }
 
-  getTutorial(id: string): Observable<Tutorial> {
+  public getTutorial(id: string): Observable<Tutorial> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  searchTutorial(keyword: string): Observable<Tutorial[]> {
+  public searchTutorial(keyword: string): Observable<Tutorial[]> {
     return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}`);
   }
 
-  createTutorial(data: any): Observable<any> {
+  public createTutorial(data: any): Observable<any> {
     return this.http.post(baseUrl, data);
   }
 
-  updateTutorial(id: string, data: Tutorial): Observable<any> {
+  public updateTutorial(id: string, data: Tutorial): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
-  deleteTutorial(id: string): Observable<any> {
+  public deleteTutorial(id: string): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
-  deleteAll(): Observable<any> {
+  public deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
 
