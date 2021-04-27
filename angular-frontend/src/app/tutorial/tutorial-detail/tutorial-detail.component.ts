@@ -6,7 +6,7 @@ import { TutorialService } from 'src/app/tutorial/tutorial.service';
 @Component({
   selector: 'app-tutorial-detail',
   templateUrl: './tutorial-detail.component.html',
-  styleUrls: ['./tutorial-detail.component.css']
+  styleUrls: []
 })
 export class TutorialDetailComponent implements OnInit {
 
