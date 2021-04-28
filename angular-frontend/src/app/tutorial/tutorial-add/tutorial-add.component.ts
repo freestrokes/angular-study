@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
 
-
 @Component({
   selector: 'app-tutorial-add',
   templateUrl: './tutorial-add.component.html',
@@ -21,6 +20,7 @@ export class TutorialAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Create tutorial
   public createTutorial(): void {
     this.tutorialService.createTutorial(this.tutorial)
       .subscribe(response => {

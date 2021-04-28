@@ -32,6 +32,7 @@ export class TutorialDetailComponent implements OnInit {
     this.getTutorial(this.route.snapshot.params.id);
   }
 
+  // Retrieve tutorial by id
   public getTutorial(id: string): void {
     this.tutorialService.getTutorial(id)
       .subscribe(response => {
@@ -43,6 +44,7 @@ export class TutorialDetailComponent implements OnInit {
       });
   }
 
+  // Update tutorial by id
   public updateTutorial(): void {
     if (!this.tutorial.id) {
       return;
@@ -63,6 +65,7 @@ export class TutorialDetailComponent implements OnInit {
       });
   }
 
+  // Delete tutorial by id
   public deleteTutorial(): void {
     if (!this.tutorial.id) {
       return;
@@ -78,8 +81,8 @@ export class TutorialDetailComponent implements OnInit {
       });
   }
 
+  // Update tutorial status
   public updatePublished(status: boolean): void {
-
     if (!this.tutorial.id) {
       return;
     }

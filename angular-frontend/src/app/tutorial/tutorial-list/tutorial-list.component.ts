@@ -22,6 +22,7 @@ export class TutorialListComponent implements OnInit {
     this.retrieveTutorialList();
   }
 
+  // Retrieve all tutorials
   public retrieveTutorialList(): void {
     this.tutorialService.getTutorialList()
       .subscribe(response => {
@@ -33,6 +34,7 @@ export class TutorialListComponent implements OnInit {
       });
   }
 
+  // Search tutorial by keyword
   public searchTutorial(): void {
     //TODO
     // this.currentTutorial = undefined;
