@@ -10,44 +10,25 @@
   <div class="col-md-8">
     <h4>Tutorial List</h4>
     <ul class="list-group">
-      <!--TODO-->
-      <!--(click)="setActiveTutorial(tutorial, i)"-->
-      <!--[class.active]="i == currentIndex"-->
-      <!--//TODO-->
       <li class="list-group-item"
-          *ngFor="let tutorial of tutorialList; let i = index"
+          *ngFor="let tutorial of tutorialList | paginate: { itemsPerPage: pageSize, currentPage: currnetPage, totalItems: tutorialList.length }; let i = index;"
           routerLink="/tutorial/{{tutorial.id}}">
         {{tutorial.title}}
       </li>
     </ul>
-    <!--TODO-->
-    <!--<button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">-->
-      <!--Remove All-->
-    <!--</button>-->
-    <!--//TODO-->
   </div>
-  <!--TODO-->
-  <!--<div class="col-md-8">-->
-    <!--<div *ngIf="currentTutorial">-->
-      <!--<h4>Tutorial</h4>-->
-      <!--<div>-->
-        <!--<label><strong>Title:</strong></label>-->
-        <!--{{currentTutorial.title}}-->
-      <!--</div>-->
-      <!--<div>-->
-        <!--<label><strong>Description:</strong></label>-->
-        <!--{{currentTutorial.description}}-->
-      <!--</div>-->
-      <!--<div>-->
-        <!--<label><strong>Status:</strong></label>-->
-        <!--{{currentTutorial.published ? 'Published' : 'Pending'}}-->
-      <!--</div>-->
-      <!--<a class="badge badge-warning" routerLink="/tutorial/{{currentTutorial.id}}">Edit</a>-->
-    <!--</div>-->
-    <!--<div *ngIf="!currentTutorial">-->
-      <!--<br/>-->
-      <!--<p>Please click on a Tutorial...</p>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--//TODO-->
+
+  <!-- Pagination:S -->
+  <div class="col-md-12">
+    <pagination-controls
+      [directionLinks]="true"
+      [previousLabel]="Prev"
+      [nextLabel]="Next"
+      [responsive]="true"
+      [maxSize]="10"
+      (pageChange)="pageChanged($event)">
+    </pagination-controls>
+  </div>
+  <!-- Pagination:E -->
+
 </div>

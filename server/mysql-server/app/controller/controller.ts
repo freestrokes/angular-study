@@ -34,6 +34,10 @@ exports.create = (req, res) => {
 
 // Retrieve all tutorials
 exports.findAll = (req, res) => {
+
+    //TODO
+    console.log('req.query', req.query);
+
     const keyword = req.query.keyword;
     let condition = { where: {} };
     //TODO
