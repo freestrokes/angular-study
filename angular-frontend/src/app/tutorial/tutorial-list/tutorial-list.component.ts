@@ -38,7 +38,7 @@ export class TutorialListComponent implements OnInit {
 
   // Retrieve all tutorials
   public retrieveTutorialList(): void {
-    this.tutorialService.getTutorialList()
+    this.tutorialService.getTutorialList(this.keyword)
       .subscribe(response => {
         if (response) {
           this.tutorialList = response;

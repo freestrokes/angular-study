@@ -15,8 +15,8 @@ export class TutorialService {
   constructor(private http: HttpClient) {}
 
   // Retrieve all tutorials
-  public getTutorialList(): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(baseUrl);
+  public getTutorialList(keyword: string): Observable<Tutorial[]> {
+    return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}`);
   }
 
   // Retrieve tutorial by id
