@@ -100,17 +100,29 @@
 //
 // }
 
+// SelectValue Class
+export class SelectValue {
+  public label: string;
+  public value: any;
+  public checked: boolean;
+
+  constructor(label: string, value: any, checked: boolean) {
+    this.label = label;
+    this.value = value;
+    this.checked = checked;
+  }
+}
+
 // Page Class
 export class Page {
-
+  public itemsPerPage: number;
   public currentPage: number;
-  public totalCount: number;
-  public pageSize: number;
+  public totalItems: number;
 
   constructor() {
+    this.itemsPerPage = 0;
     this.currentPage = 0;
-    this.totalCount = 0;
-    this.pageSize = 0;
+    this.totalItems = 0;
   }
 
   // constructor(page: Pageable = null) {

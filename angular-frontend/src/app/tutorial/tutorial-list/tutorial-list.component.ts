@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
-import { Page } from 'src/app/common/value/common.value';
+import { SelectValue, Page } from 'src/app/common/value/common.value';
 
 @Component({
   selector: 'app-tutorial-list',
@@ -16,16 +16,24 @@ export class TutorialListComponent implements OnInit {
   public keyword = '';
 
   //TODO
-  // public pageSizeList: object[] = [
-  //   { label: '10', value: 10, checked: true },
-  //   { label: '50', value: 50, checked: false },
-  //   { label: '100', value: 100, checked: false }
-  // ];
+  public pageSizeList: SelectValue[] = [
+    { label: '3', value: 3, checked: true },
+    { label: '10', value: 10, checked: false },
+    { label: '50', value: 50, checked: false },
+    { label: '100', value: 100, checked: false }
+  ];
 
   constructor(private tutorialService: TutorialService) {}
 
   ngOnInit(): void {
+    this.initPage();
     this.retrieveTutorialList();
+  }
+
+  // Initialize page
+  public initPage(): void {
+    this.page.currentPage = 1;
+    this.page.itemsPerPage = this.pageSizeList.filter(item => item.checked)[0].value;
   }
 
   // Retrieve all tutorials
@@ -33,6 +41,8 @@ export class TutorialListComponent implements OnInit {
     this.tutorialService.getTutorialList()
       .subscribe(response => {
         if (response) {
+          this.tutorialList = response;
+          this.page.totalItems = this.tutorialList.length;
           this.tutorialList = response;
         } else {
           console.log(response);
@@ -52,10 +62,17 @@ export class TutorialListComponent implements OnInit {
       });
   } // func - searchTutorial
 
-  // Page changed
-  public pageChanged(event: number): void {
+  // Change page
+  public changePage(event: number): void {
     this.page.currentPage = event;
     this.retrieveTutorialList();
   } // func - pageChanged
+
+  // Change page size
+  public changePageSize(event: any): void {
+    this.page.itemsPerPage = event.target.value;
+    this.page.currentPage = 1;
+    this.retrieveTutorialList();
+  } // func - changePageSize
 
 }
