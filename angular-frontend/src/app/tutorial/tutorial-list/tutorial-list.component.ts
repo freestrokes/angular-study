@@ -15,10 +15,8 @@ export class TutorialListComponent implements OnInit {
   public page: Page = new Page();
   public keyword = '';
 
-  //TODO
   public pageSizeList: SelectValue[] = [
-    { label: '3', value: 3, checked: true },
-    { label: '10', value: 10, checked: false },
+    { label: '10', value: 10, checked: true },
     { label: '50', value: 50, checked: false },
     { label: '100', value: 100, checked: false }
   ];

@@ -1,6 +1,32 @@
 // import {CommonConstant} from '../constant/common-constant';
 // import * as _ from 'lodash';
 
+// SelectValue Class
+export class SelectValue {
+  public label: string; // 라벨
+  public value: any; // 값
+  public checked: boolean; // 체크 여부
+
+  constructor(label: string, value: any, checked: boolean) {
+    this.label = label;
+    this.value = value;
+    this.checked = checked;
+  }
+}
+
+// Page Class
+export class Page {
+  public itemsPerPage: number; // 페이지당 목록 개수
+  public currentPage: number; // 현재 페이지
+  public totalItems: number; // 전체 목록 개수
+
+  constructor() {
+    this.itemsPerPage = 0;
+    this.currentPage = 0;
+    this.totalItems = 0;
+  }
+}
+
 // /**
 //  * 공통 Value
 //  */
@@ -100,73 +126,60 @@
 //
 // }
 
-// SelectValue Class
-export class SelectValue {
-  public label: string;
-  public value: any;
-  public checked: boolean;
-
-  constructor(label: string, value: any, checked: boolean) {
-    this.label = label;
-    this.value = value;
-    this.checked = checked;
-  }
-}
-
 // Page Class
-export class Page {
-  public itemsPerPage: number;
-  public currentPage: number;
-  public totalItems: number;
-
-  constructor() {
-    this.itemsPerPage = 0;
-    this.currentPage = 0;
-    this.totalItems = 0;
-  }
-
-  // constructor(page: Pageable = null) {
-  //   if (page) {
-  //     this.totalElements = page.totalElements;
-  //     this.totalPages = page.totalPages;
-  //     this.last = page.last;
-  //     this.numberOfElements = page.numberOfElements;
-  //     this.first = page.first;
-  //     this.last = page.last;
-  //     this.size = page.size;
-  //     this.number = page.number;
-  //   }
-  // }
-  //
-  // // 전체 목록 개수
-  // public totalElements: number;
-  //
-  // // 전체 페이지 개수
-  // public totalPages: number;
-  //
-  // // 마지막 페이지 여부
-  // public last: boolean;
-  //
-  // // 현재 페이지의 목록 개수
-  // public numberOfElements: number;
-  //
-  // // 첫 페이지 여부
-  // public first: boolean;
-  //
-  // // Sort 정보
-  // public sort: Sort;
-  //
-  // // 한 페이지당 최대목록 개수
-  // public size: number = 20;
-  //
-  // // 현재 페이지 번호
-  // public number: number;
-  //
-  // // Data 목록
-  // public content: Object;
-  //
-  // public range: number;
-}
+// export class Page {
+//   public itemsPerPage: number; // 페이지당 목록 개수
+//   public currentPage: number; // 현재 페이지
+//   public totalItems: number; // 전체 목록 개수
+//
+//   constructor() {
+//     this.itemsPerPage = 0;
+//     this.currentPage = 0;
+//     this.totalItems = 0;
+//   }
+//
+//   // constructor(page: Pageable = null) {
+//   //   if (page) {
+//   //     this.totalElements = page.totalElements;
+//   //     this.totalPages = page.totalPages;
+//   //     this.last = page.last;
+//   //     this.numberOfElements = page.numberOfElements;
+//   //     this.first = page.first;
+//   //     this.last = page.last;
+//   //     this.size = page.size;
+//   //     this.number = page.number;
+//   //   }
+//   // }
+//   //
+//   // // 전체 목록 개수
+//   // public totalElements: number;
+//   //
+//   // // 전체 페이지 개수
+//   // public totalPages: number;
+//   //
+//   // // 마지막 페이지 여부
+//   // public last: boolean;
+//   //
+//   // // 현재 페이지의 목록 개수
+//   // public numberOfElements: number;
+//   //
+//   // // 첫 페이지 여부
+//   // public first: boolean;
+//   //
+//   // // Sort 정보
+//   // public sort: Sort;
+//   //
+//   // // 한 페이지당 최대목록 개수
+//   // public size: number = 20;
+//   //
+//   // // 현재 페이지 번호
+//   // public number: number;
+//   //
+//   // // Data 목록
+//   // public content: Object;
+//   //
+//   // public range: number;
+// }
 
 // /**
 //  * Sort

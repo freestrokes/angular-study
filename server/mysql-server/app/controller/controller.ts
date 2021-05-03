@@ -40,6 +40,7 @@ exports.findAll = (req, res) => {
 
     const keyword = req.query.keyword;
     let condition = { where: {} };
+
     //TODO
     // const condition = { where: ( keyword ? { title: { [Op.like]: `%${keyword}%` } } : {} ) };
 
