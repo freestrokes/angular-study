@@ -2,6 +2,8 @@ const db = require('../model/index.ts');
 const Tutorial = db.tutorial;
 const Op = db.sequelize.Op;
 
+const DEFAULT_PAGE_SIZE = 5;
+
 // Create tutorial
 exports.create = (req, res) => {
     // Validate request
@@ -34,15 +36,11 @@ exports.create = (req, res) => {
 
 // Retrieve all tutorials
 exports.findAll = (req, res) => {
+    const keyword = req.query.keyword ? req.query.keyword : '';
+    const limit = parseInt( (req.query.size ? req.query.size : DEFAULT_PAGE_SIZE).toString() );
+    const offset = parseInt( (req.query.page ? req.query.page * limit : 0).toString() );
 
-    //TODO
-    console.log('req.query', req.query);
-
-    const keyword = req.query.keyword;
-    let condition = { where: {} };
-
-    //TODO
-    // const condition = { where: ( keyword ? { title: { [Op.like]: `%${keyword}%` } } : {} ) };
+    let condition = { where: {}, limit: limit, offset: offset };
 
     if (keyword) {
         condition = {
@@ -59,12 +57,14 @@ exports.findAll = (req, res) => {
                         }
                     }
                 ]
-            }
+            },
+            limit: limit,
+            offset: offset
         }
     };
 
     Tutorial
-        .findAll(condition)
+        .findAndCountAll(condition)
         .then(data => {
             res.send(data);
         })

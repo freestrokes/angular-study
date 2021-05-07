@@ -38,7 +38,7 @@
       <li class="list-group-item"
           *ngFor="let tutorial of tutorialList | paginate: page; let idx = index;"
           routerLink="/tutorial/{{tutorial.id}}">
-        {{tutorialList.length - idx}}. {{tutorial.title}}
+        {{page.totalItems - ((page.currentPage-1) * page.itemsPerPage) - idx}}. {{tutorial.title}}
       </li>
     </ul>
   </div>
@@ -54,6 +54,9 @@
           [previousLabel]="'Prev'"
           [nextLabel]="'Next'"
           [maxSize]="10"
+          [screenReaderPaginationLabel]="'Pagination'"
+          [screenReaderPageLabel]="'Next Page.'"
+          [screenReaderCurrentLabel]="'You are on page.'"
           (pageChange)="changePage($event)">
         </pagination-controls>
       </div>

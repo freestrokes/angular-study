@@ -32,16 +32,15 @@ export class TutorialListComponent implements OnInit {
   public initPage(): void {
     this.page.currentPage = 1;
     this.page.itemsPerPage = this.pageSizeList.filter(item => item.checked)[0].value;
-  }
+  } // func - initPage
 
   // Retrieve all tutorials
   public retrieveTutorialList(): void {
-    this.tutorialService.getTutorialList(this.keyword)
+    this.tutorialService.getTutorialList(this.keyword, this.page)
       .subscribe(response => {
         if (response) {
-          this.tutorialList = response;
-          this.page.totalItems = this.tutorialList.length;
-          this.tutorialList = response;
+          this.tutorialList = response.rows;
+          this.page.totalItems = response.count;
         } else {
           console.log(response);
         }

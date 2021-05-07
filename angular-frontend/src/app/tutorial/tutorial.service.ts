@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
+import { Page } from 'src/app/common/value/common.value';
 
-const baseUrl = 'http://localhost:8080/api/tutorial';
+//TODO
+// const baseUrl = 'http://localhost:8080/api/tutorial';
+const baseUrl = 'http://localhost:3000/api/tutorial';
 
 // 전역에서 사용하고자하는 경우 아래와 같이 설정
 // @Injectable({
@@ -15,8 +18,9 @@ export class TutorialService {
   constructor(private http: HttpClient) {}
 
   // Retrieve all tutorials
-  public getTutorialList(keyword: string): Observable<Tutorial[]> {
-    return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}`);
+  public getTutorialList(keyword: string, page: Page): Observable<any> {
+    // return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}`);
+    return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}&page=${page.currentPage-1}&size=${page.itemsPerPage}`);
   }
 
   // Retrieve tutorial by id
