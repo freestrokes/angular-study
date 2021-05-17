@@ -10,6 +10,13 @@
         <label for="description">Description</label>
         <input name="description" class="form-control" id="description" required [(ngModel)]="tutorial.description"/>
       </div>
+
+      <!--TODO-->
+      <div class="form-group">
+        <app-editor></app-editor>
+      </div>
+      <!--//TODO-->
+
       <button class="btn btn-success" (click)="createTutorial()">Submit</button>
     </div>
     <!--TODO-->

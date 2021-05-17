@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/common/shared.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { TutorialListComponent } from 'src/app/tutorial/tutorial-list/tutorial-list.component';
@@ -15,6 +16,7 @@ import { TutorialService } from 'src/app/tutorial/tutorial.service';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    SharedModule,
     NgxPaginationModule,
     RouterModule.forChild([
       {
