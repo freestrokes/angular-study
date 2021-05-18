@@ -10,6 +10,16 @@
         <label for="description">Description</label>
         <input type="text" name="description" class="form-control" id="description" [(ngModel)]="tutorial.description"/>
       </div>
+
+      <!--TODO-->
+      <div class="form-group">
+        <app-editor
+          [initType]="'VIEW'"
+          [content]="tutorial.description"
+        ></app-editor>
+      </div>
+      <!--//TODO-->
+
       <div class="form-group">
         <label>Status</label>
         <p><strong>{{tutorial.published ? 'Published' : 'Pending'}}</strong></p>

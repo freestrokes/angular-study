@@ -27,6 +27,13 @@ export class Page {
   }
 }
 
+// Editor Init Type
+export enum editorInitType {
+  EDIT = 'EDIT',
+  VIEW = 'VIEW'
+}
+
+
 // /**
 //  * 공통 Value
 //  */

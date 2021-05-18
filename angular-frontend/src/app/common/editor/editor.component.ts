@@ -1,7 +1,8 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { editorInitType } from 'src/app/common/value/common.value';
 
-// Toast UI Editor Import
 import TuiEditor from '@toast-ui/editor';
+import TuiViewer from '@toast-ui/editor/dist/toastui-editor-viewer';
 
 @Component({
   selector: 'app-editor',
@@ -9,6 +10,9 @@ import TuiEditor from '@toast-ui/editor';
   styleUrls: []
 })
 export class EditorComponent implements OnInit, AfterViewInit {
+
+  @Input() public content: string;
+  @Input() public initType: string;
 
   constructor() {}
 
@@ -21,13 +25,18 @@ export class EditorComponent implements OnInit, AfterViewInit {
 
   // Initialize Editor
   public initEditor(): void {
-    const tuiEditorOptions = {
+    const editorOptions = {
       el: document.getElementById('tui-editor'),
       height: '500px',
       initialEditType: 'markdown',
+      initialValue: this.content
     };
 
-    const tuiEditor = new TuiEditor(tuiEditorOptions);
+    if (this.initType === editorInitType[editorInitType.EDIT]) {
+      const tuiEditor = new TuiEditor(editorOptions);
+    } else {
+      const tuiViewer = new TuiViewer(editorOptions);
+    }
   } // func - initEditor
 
 }
