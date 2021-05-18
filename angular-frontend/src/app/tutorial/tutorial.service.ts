@@ -19,6 +19,7 @@ export class TutorialService {
 
   // Retrieve all tutorials
   public getTutorialList(keyword: string, page: Page): Observable<any> {
+    //TODO
     // return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}`);
     return this.http.get<Tutorial[]>(`${baseUrl}?keyword=${keyword}&page=${page.currentPage-1}&size=${page.itemsPerPage}`);
   }
@@ -48,6 +49,7 @@ export class TutorialService {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 
+  // Delete all tutorials
   public deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }

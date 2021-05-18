@@ -14,6 +14,14 @@ export class EditorComponent implements OnInit, AfterViewInit {
   @Input() public content: string;
   @Input() public initType: string;
 
+  //TODO
+  // @Input('initType')
+  // public set setInitType(initType: string){
+  //
+  // }
+
+  public editor;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -28,15 +36,28 @@ export class EditorComponent implements OnInit, AfterViewInit {
     const editorOptions = {
       el: document.getElementById('tui-editor'),
       height: '500px',
-      initialEditType: 'markdown',
+      initialEditType: 'wysiwyg',
       initialValue: this.content
     };
 
     if (this.initType === editorInitType[editorInitType.EDIT]) {
-      const tuiEditor = new TuiEditor(editorOptions);
+      this.editor = new TuiEditor(editorOptions);
     } else {
-      const tuiViewer = new TuiViewer(editorOptions);
+      this.editor = new TuiViewer(editorOptions);
     }
   } // func - initEditor
+
+  // Get Editor Content
+  public getContent(): string {
+    //TODO
+    // viewer의 경우에는 this.editor.markdownValue 사용해야 함
+    // if (this.editor.isViewer) {
+    //   console.log('markdownValue', this.editor.markdownValue);
+    // } else {
+    //   console.log('getHtml', this.editor.getHtml());
+    // }
+
+    return this.editor.getHtml();
+  }
 
 }

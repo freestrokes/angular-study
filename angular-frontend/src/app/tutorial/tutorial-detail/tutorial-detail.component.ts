@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
+import { EditorComponent } from 'src/app/common/editor/editor.component';
+import { editorInitType } from 'src/app/common/value/common.value';
 
 @Component({
   selector: 'app-tutorial-detail',
@@ -10,21 +12,24 @@ import { TutorialService } from 'src/app/tutorial/tutorial.service';
 })
 export class TutorialDetailComponent implements OnInit {
 
-  // TODO
-  // tutorial.value import하여 변경할 것
-  // currentTutorial: Tutorial = {
-  //   title: '',
-  //   description: '',
-  //   published: false
-  // };
+  @ViewChild('viewer', {static: false})
+  public viewer: EditorComponent;
+
 
   public tutorial: Tutorial = new Tutorial();
+  public content: string = '';
+  public editorInitType: string = editorInitType[editorInitType.VIEW];
   //TODO
   // public resultMessage = '';
 
+  protected changeDetect: ChangeDetectorRef;
+
   constructor(private tutorialService: TutorialService,
               private route: ActivatedRoute,
-              private router: Router) {}
+              private router: Router,
+              protected injector: Injector) {
+    this.changeDetect = injector.get(ChangeDetectorRef);
+  }
 
   ngOnInit(): void {
     //TODO
@@ -32,12 +37,20 @@ export class TutorialDetailComponent implements OnInit {
     this.getTutorial(this.route.snapshot.params.id);
   }
 
+  // Set Editor Init Type
+  public setEditorInitType(): void {
+    this.editorInitType = (this.editorInitType === editorInitType[editorInitType.VIEW]) ? editorInitType[editorInitType.EDIT] : editorInitType[editorInitType.VIEW];
+    this.changeDetect.detectChanges();
+    this.viewer.initEditor();
+  } // func - setEditorInitType
+
   // Retrieve tutorial by id
   public getTutorial(id: string): void {
     this.tutorialService.getTutorial(id)
       .subscribe(response => {
         if (response) {
           this.tutorial = response;
+          this.content = this.tutorial.description;
         } else {
           console.log(response);
         }
@@ -46,9 +59,11 @@ export class TutorialDetailComponent implements OnInit {
 
   // Update tutorial by id
   public updateTutorial(): void {
-    if (!this.tutorial.id) {
+    if (!this.tutorial.id || !this.viewer) {
       return;
     }
+
+    this.tutorial.description = this.viewer.getContent();
 
     //TODO
     // this.resultMessage = '';

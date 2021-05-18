@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
+import { EditorComponent } from 'src/app/common/editor/editor.component';
 
 @Component({
   selector: 'app-tutorial-add',
@@ -9,6 +10,9 @@ import { TutorialService } from 'src/app/tutorial/tutorial.service';
   styleUrls: []
 })
 export class TutorialAddComponent implements OnInit {
+
+  @ViewChild('editor', {static: false})
+  public editor: EditorComponent;
 
   public tutorial: Tutorial = new Tutorial();
   //TODO
@@ -22,6 +26,12 @@ export class TutorialAddComponent implements OnInit {
 
   // Create tutorial
   public createTutorial(): void {
+    if (!this.editor) {
+      return;
+    }
+
+    this.tutorial.description = this.editor.getContent();
+
     this.tutorialService.createTutorial(this.tutorial)
       .subscribe(response => {
         if (response) {
