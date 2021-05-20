@@ -15,8 +15,6 @@ export class TutorialAddComponent implements OnInit {
   public editor: EditorComponent;
 
   public tutorial: Tutorial = new Tutorial();
-  //TODO
-  // public submitted: boolean = false;
 
   constructor(private tutorialService: TutorialService,
               private router: Router) {}
@@ -43,15 +41,5 @@ export class TutorialAddComponent implements OnInit {
         }
       });
   }
-
-  //TODO
-  // newTutorial(): void {
-  //   this.submitted = false;
-  //   this.tutorial = {
-  //     title: '',
-  //     description: '',
-  //     published: false
-  //   };
-  // }
 
 }

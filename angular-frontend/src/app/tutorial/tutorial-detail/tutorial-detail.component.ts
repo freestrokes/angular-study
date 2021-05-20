@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild, Injector } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tutorial } from 'src/app/tutorial/tutorial.value';
 import { TutorialService } from 'src/app/tutorial/tutorial.service';
@@ -19,27 +19,20 @@ export class TutorialDetailComponent implements OnInit {
   public tutorial: Tutorial = new Tutorial();
   public content: string = '';
   public editorInitType: string = editorInitType[editorInitType.VIEW];
-  //TODO
-  // public resultMessage = '';
-
-  protected changeDetect: ChangeDetectorRef;
 
   constructor(private tutorialService: TutorialService,
               private route: ActivatedRoute,
               private router: Router,
-              protected injector: Injector) {
-    this.changeDetect = injector.get(ChangeDetectorRef);
+              private changeDetect: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
-    //TODO
-    // this.resultMessage = '';
     this.getTutorial(this.route.snapshot.params.id);
   }
 
   // Set Editor Init Type
   public setEditorInitType(): void {
-    this.editorInitType = (this.editorInitType === editorInitType[editorInitType.VIEW]) ? editorInitType[editorInitType.EDIT] : editorInitType[editorInitType.VIEW];
+    this.editorInitType = this.editorInitType === editorInitType[editorInitType.VIEW] ? editorInitType[editorInitType.EDIT] : editorInitType[editorInitType.VIEW];
     this.changeDetect.detectChanges();
     this.viewer.initEditor();
   } // func - setEditorInitType
@@ -65,15 +58,10 @@ export class TutorialDetailComponent implements OnInit {
 
     this.tutorial.description = this.viewer.getContent();
 
-    //TODO
-    // this.resultMessage = '';
-
     this.tutorialService.updateTutorial(this.tutorial.id, this.tutorial)
       .subscribe(response => {
         if (response) {
           this.router.navigate(['/tutorial/list']);
-          //TODO
-          // this.resultMessage = response.message ? response.message : 'Tutorial updated.';
         } else {
           console.log(response);
         }
@@ -102,15 +90,10 @@ export class TutorialDetailComponent implements OnInit {
       return;
     }
 
-    //TODO
-    // this.resultMessage = '';
-
     this.tutorialService.updateTutorial(this.tutorial.id, this.tutorial)
       .subscribe(response => {
         if (response) {
           this.tutorial.published = status;
-          //TODO
-          // this.resultMessage = response.message ? response.message : 'Tutorial status updated.';
         } else {
           console.log(response);
         }

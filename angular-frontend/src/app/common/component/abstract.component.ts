@@ -16,6 +16,7 @@ export abstract class AbstractComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
   }
 
+  //TODO
   protected safelyDetectChanges(): void {
     // tslint:disable-next-line:no-string-literal
     if (!this.changeDetect['destroyed']) {
