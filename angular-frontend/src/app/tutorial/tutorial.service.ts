@@ -6,7 +6,7 @@ import { Page } from 'src/app/common/value/common.value';
 
 //TODO
 // const baseUrl = 'http://localhost:8080/api/tutorial';
-const baseUrl = 'http://localhost:3000/api/tutorial';
+const baseUrl = 'http://freestrokes-backend.herokuapp.com/api/tutorial';
 
 // 전역에서 사용하고자하는 경우 아래와 같이 설정
 // @Injectable({
