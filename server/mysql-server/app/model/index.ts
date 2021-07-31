@@ -1,5 +1,5 @@
-const dbConfig = require('../config/config.ts');
-// const dbConfig = require('../config/config.heroku.ts');
+const dbConfig = require('../config/db.config.ts');
+// const dbConfig = require('../config/db.config.heroku.ts');
 const Sequelize = require('sequelize');
 
 const sequelizeConfig = new Sequelize(

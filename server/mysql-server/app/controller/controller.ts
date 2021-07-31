@@ -1,6 +1,6 @@
-const db = require('../model/index.ts');
-const Tutorial = db.tutorial;
-const Op = db.sequelize.Op;
+const model = require('../model/index.ts');
+const Tutorial = model.tutorial;
+const Op = model.sequelize.Op;
 
 const DEFAULT_PAGE_SIZE = 5;
 

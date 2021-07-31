@@ -1,11 +1,11 @@
-const db = require('../model/index.ts');
+const model = require('../model/index.ts');
 const authConfig = require('../config/auth.config.ts');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const Op = db.sequelize.Op;
-const User = db.user;
-const Role = db.role;
+const Op = model.sequelize.Op;
+const User = model.user;
+const Role = dmodel.role;
 
 exports.signup = (req, res) => {
     // Save User to Database
