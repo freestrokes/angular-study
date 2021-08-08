@@ -1,0 +1,52 @@
+<div class="col-md-8">
+  <div *ngIf="board.id" class="edit-form">
+    <h4>Board Detail</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" class="form-control" id="title" [(ngModel)]="board.title"/>
+      </div>
+      <div class="form-group">
+        <app-editor
+          #viewer
+          [initType]="editorInitType"
+          [content]="board.description"
+        ></app-editor>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <p><strong>{{board.published ? 'Published' : 'Pending'}}</strong></p>
+      </div>
+    </form>
+    <!--TODO-->
+    <!--<button class="btn btn-success" (click)="saveTutorial()">Submit</button>-->
+    <!--//TODO-->
+    <!--TODO-->
+    <!--<div *ngIf="submitted">-->
+      <!--<h4>Tutorial was submitted successfully!</h4>-->
+      <!--<button class="btn btn-success" (click)="newTutorial()">Add</button>-->
+    <!--</div>-->
+    <!--TODO-->
+    <!--TODO-->
+    <!--<button class="badge badge-primary mr-2" *ngIf="tutorial.published" (click)="updatePublished(false)">UnPublish</button>-->
+    <!--<button class="badge badge-primary mr-2" *ngIf="!tutorial.published" (click)="updatePublished(true)">Publish</button>-->
+    <!--<button class="badge badge-success mb-2" (click)="updateTutorial()">Update</button>-->
+    <!--<button class="badge badge-danger mr-2" (click)="deleteTutorial()">Delete</button>-->
+    <!--//TODO-->
+    <!--TODO-->
+    <!-- 추후 공개/비공개 토글로 변경 -->
+    <button class="btn btn-primary mr-2" *ngIf="board.published" (click)="updatePublished(false)">UnPublish</button>
+    <button class="btn btn-primary mr-2" *ngIf="!board.published" (click)="updatePublished(true)">Publish</button>
+    <!--//TODO-->
+    <button class="btn btn-success mr-2" *ngIf="editorInitType === 'VIEW'" (click)="setEditorInitType()">Update</button>
+    <button class="btn btn-success mr-2" *ngIf="editorInitType === 'EDIT'" (click)="updateBoard()">Submit</button>
+    <button class="btn btn-success mr-2" *ngIf="editorInitType === 'EDIT'" (click)="setEditorInitType()">Cancel</button>
+    <button class="btn btn-danger mr-2" (click)="deleteBoard()">Delete</button>
+  </div>
+  <!--TODO-->
+  <!--<div *ngIf="!tutorial.id">-->
+    <!--<br/>-->
+    <!--<p>Cannot access this Tutorial...</p>-->
+  <!--</div>-->
+  <!--//TODO-->
+</div>
