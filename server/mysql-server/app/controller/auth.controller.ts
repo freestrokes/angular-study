@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 
 const Op = model.sequelize.Op;
 const User = model.user;
-const Role = dmodel.role;
+const Role = model.role;
 
 exports.signup = (req, res) => {
     // Save User to Database
